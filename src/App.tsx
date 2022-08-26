@@ -5,7 +5,7 @@ function App() {
   //const [count, setCount] = useState();
 
   return (
-    <div className="container mx-auto max-w-2xl pt-5">
+    <div className="text-3xl font-bold underline">
       Test
       {/* <h1>Hello React</h1> */}
     </div>
