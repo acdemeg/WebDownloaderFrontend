@@ -2,9 +2,9 @@ import React from 'react';
 import SVG from './box.svg';
 
 
-function Logo() {
+const Logo: React.FC = () => {
   return (
-    <div className="flex flex-none justify-center items-center text-5xl bg-pink-400 logo-font">
+    <div className="flex justify-center items-center text-5xl my-8 bg-pink-400 logo-font">
       <div>web</div>
       <img src={SVG} alt="Logo" />
       <div>downloder</div>

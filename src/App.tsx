@@ -1,9 +1,14 @@
 import React from 'react';
 import Logo from './Logo';
+import SearchBlock from './SearchBlock';
 
-function App() {
+
+const App: React.FC = () =>   {
   return (
-    <Logo/>
+    <div>
+      <Logo/>
+      <SearchBlock />
+    </div>
   );
 }
 
