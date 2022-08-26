@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: "Jua";
+  src: url("/public/fonts/Jua\ Regular\ 400.ttf");
+}
+
+body {
+	background-color: rgb(203 213 225);
+}
+
+.logo-font {
+  font-family: "Jua";
+}
