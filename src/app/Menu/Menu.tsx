@@ -8,10 +8,10 @@ import DescriptionMenu from './DescriptionMenu';
 
 const Menu: React.FC = () =>   {
   return (
-    <div className='w-full flex justify-evenly'>
+    <div className='w-full h-72 flex justify-evenly'>
       <RunTaskMenu />
-      <div className='flex flex-col justify-around items-center w-1/3 h-72'>
-        <Btn bgColor='rose' title=' Status Task' Icon={SearchOutlined}/>
+      <div className='flex flex-col justify-around items-center w-1/3'>
+        <Btn title=' Status Task' Icon={SearchOutlined}/>
         <DescriptionMenu />
       </div>
       <GetResultMenu />
