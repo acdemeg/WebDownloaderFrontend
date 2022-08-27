@@ -1,11 +1,7 @@
 import React, { useContext, useState } from 'react';
+import { Children, ContextState } from './Types';
 
-type T = {
-  description: string,
-  setDescription: (desk: string) => void
-}
-
-const Context = React.createContext<T>({
+const Context = React.createContext<ContextState>({
   description: "",
   setDescription: () => {}
 });
@@ -14,11 +10,9 @@ export const useContextProvider = () => {
   return useContext(Context);
 }
 
-type Children = { children: React.ReactNode }
-
 const ContextProvider: React.FC<Children> = ({ children }) =>   {
 
-  const [state, setState] = useState<string>("default");
+  const [state, setState] = useState<string>("");
 
   const setDescription = (desk: string) => {
     setState(desk);

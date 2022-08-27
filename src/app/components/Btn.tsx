@@ -1,13 +1,8 @@
 import React from 'react';
 import { Button } from 'antd';
 import { useContextProvider } from '../ContextProvider';
+import { BtnProps } from '../Interfaces';
 
-interface BtnProps {
-  bgColor?: string,
-  title: string,
-  Icon: React.ForwardRefExoticComponent<any>,
-
-}
 
 const Btn: React.FC<BtnProps> = ({ title, Icon }) => {
 
@@ -16,7 +11,8 @@ const Btn: React.FC<BtnProps> = ({ title, Icon }) => {
   return (
     <div>
       <Button
-        onClick={() => setDescription(title)} 
+        onMouseEnter={() => setDescription(title)}
+        onMouseLeave={() => setDescription("")} 
         className={`rounded-md h-11 w-44 text-lg hover:text-white`} 
         icon={<Icon style={{ fontSize: '28px'}}/>}>
         {title}
