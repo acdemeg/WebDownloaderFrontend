@@ -1,13 +1,13 @@
 import React from 'react';
-import Logo from './Logo';
-import SearchBlock from './SearchBlock';
+import Logo from './logo/Logo';
+import MainContainer from './MainContainer';
 
 
 const App: React.FC = () =>   {
   return (
     <div>
       <Logo/>
-      <SearchBlock />
+      <MainContainer />
     </div>
   );
 }
