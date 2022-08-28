@@ -1,13 +1,14 @@
 import React from 'react';
-import Btn from '../components/Btn';
+import MenuButton from '../components/MenuButton';
 import { FileZipOutlined, ApartmentOutlined, SaveOutlined } from '@ant-design/icons';
+import { GET_SIZE, GET_ZIP, GET_SITE_MAP } from '../Constants';
 
 const GetResultMenu: React.FC = () =>   {
   return (
     <div className='flex flex-col justify-evenly'>
-      <Btn title=' Get Zip' Icon={FileZipOutlined}/>
-      <Btn title=' Get Size' Icon={SaveOutlined}/>
-      <Btn title=' Get Site Map' Icon={ApartmentOutlined}/>
+      <MenuButton action={GET_ZIP} title=' Get Zip' Icon={FileZipOutlined}/>
+      <MenuButton action={GET_SIZE} title=' Get Size' Icon={SaveOutlined}/>
+      <MenuButton action={GET_SITE_MAP} title=' Get Site Map' Icon={ApartmentOutlined}/>
     </div>
   );
 }
