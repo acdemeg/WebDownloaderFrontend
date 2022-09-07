@@ -6,4 +6,11 @@ export type ContextState = {
 
 export type Children = { children: React.ReactNode }
 
-export type ActionsDesk = { [index: string]:  string }
+export type Internationalization = {
+   Eng: {
+    [index: string]:  string
+   },
+   Rus: {
+    [index: string]:  string
+   }
+  }

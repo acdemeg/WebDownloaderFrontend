@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { Children, ContextState } from './Types';
+import { actionsDescList } from './Menu/DescriptionMenu';
 
 const Context = React.createContext<ContextState>({
   description: "",
@@ -12,7 +13,7 @@ export const useContextProvider = () => {
 
 const ContextProvider: React.FC<Children> = ({ children }) =>   {
 
-  const [state, setState] = useState<string>("");
+  const [state, setState] = useState<string>(actionsDescList.Eng.DEFAULT);
 
   const setDescription = (desk: string) => {
     setState(desk);

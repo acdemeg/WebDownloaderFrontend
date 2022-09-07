@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: "Jua";
-  src: url("/public/fonts/Jua\ Regular\ 400.ttf");
+  font-family: "Comic";
+  src: url("/public/fonts/Comic\ Relief\ Bold.otf");
 }
 
 body {
   background-color: rgb(23 23 23);
-  font-family: "Jua";
+  font-family: "Comic";
 }

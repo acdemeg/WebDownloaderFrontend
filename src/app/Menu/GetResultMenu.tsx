@@ -1,5 +1,5 @@
 import React from 'react';
-import MenuButton from '../components/MenuButton';
+import MenuButton from './MenuButton';
 import { FileZipOutlined, ApartmentOutlined, SaveOutlined } from '@ant-design/icons';
 import { GET_SIZE, GET_ZIP, GET_SITE_MAP } from '../Constants';
 

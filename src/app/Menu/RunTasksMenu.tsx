@@ -1,5 +1,5 @@
 import React from 'react';
-import MenuButton from '../components/MenuButton';
+import MenuButton from './MenuButton';
 import {  CloudDownloadOutlined, HddOutlined, ForkOutlined } from '@ant-design/icons';
 import { START_DOWNLOAD, ESTIMATE_SIZE, BUILD_SITE_MAP } from '../Constants';
 
