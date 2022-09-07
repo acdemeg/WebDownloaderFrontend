@@ -1,16 +1,15 @@
 
 export type ContextState = {
-  description: string,
-  setDescription: (desk: string) => void
+  actionDescription: string,
+  setDescription: (desc: string) => void,
+  lang: string,
+  setLanguage: (lang: string) => void
 }
 
 export type Children = { children: React.ReactNode }
 
 export type Internationalization = {
-   Eng: {
-    [index: string]:  string
-   },
-   Rus: {
-    [index: string]:  string
+  [language: string]: {
+    [actionType: string]:  string
    }
   }

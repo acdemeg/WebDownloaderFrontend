@@ -1,21 +1,4 @@
-import React from 'react';
-import { useContextProvider } from '../ContextProvider';
 import { Internationalization } from '../Types';
-
-const DescriptionMenu: React.FC = () => {
-  
-  const { description } = useContextProvider();
-
-  return (
-    <div 
-      className='min-w-full h-52 border-solid border-4 border-black rounded p-1 break-words bg-sky-700 text-green-500'
-      style={{ minWidth: "16rem;" }}>
-      {'> ' + description}
-    </div>
-  );
-}
-
-export default DescriptionMenu;
 
 export const actionsDescList: Internationalization = {
   Eng: {

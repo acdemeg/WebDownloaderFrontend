@@ -2,10 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "./app/lang-switcher/lang-switch.css";
+
 @font-face {
   font-family: "Comic";
   src: url("/public/fonts/Comic\ Relief\ Bold.otf");
 }
+
+*, ::after, ::before {
+  box-sizing: inherit;
+}
+
+html {
+  line-height: inherit;
+}
+
 
 body {
   background-color: rgb(23 23 23);

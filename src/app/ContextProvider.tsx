@@ -1,10 +1,13 @@
 import React, { useContext, useState } from 'react';
 import { Children, ContextState } from './Types';
-import { actionsDescList } from './Menu/DescriptionMenu';
+import { RUS } from './Constants';
+import { actionsDescList } from './internationalization/action-titles';
 
 const Context = React.createContext<ContextState>({
-  description: "",
-  setDescription: () => {}
+  actionDescription: "",
+  setDescription: () => {},
+  lang: "",
+  setLanguage: () => {}
 });
 
 export const useContextProvider = () => {
@@ -13,16 +16,20 @@ export const useContextProvider = () => {
 
 const ContextProvider: React.FC<Children> = ({ children }) =>   {
 
-  const [state, setState] = useState<string>(actionsDescList.Eng.DEFAULT);
+  const [lang, setLang] = useState<string>(RUS);
+  const [description, setDescription] = useState<string>(actionsDescList.Rus.DEFAULT);
 
-  const setDescription = (desk: string) => {
-    setState(desk);
+  const setLanguage = (lang: string) => {
+    setLang(lang);
+    setDescription(actionsDescList[lang].DEFAULT);
   }
 
   return (
     <Context.Provider value={{
-      description: state,
-      setDescription
+      actionDescription: description,
+      setDescription,
+      lang: lang,
+      setLanguage
     }}>
           {children}
     </Context.Provider>
