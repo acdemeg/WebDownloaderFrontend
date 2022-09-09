@@ -8,7 +8,9 @@ export const titleButtonList: Internationalization = {
     BUILD_SITE_MAP : " Build Site Map",
     GET_ZIP : " Get Zip",
     GET_SIZE : " Get Size",
-    GET_SITE_MAP : " Get Site Map"
+    GET_SITE_MAP : " Get Site Map",
+    COPY: "Copy",
+    CLOSE: "Close"
   },
   Rus: {
     GET_STATUS_TASK: " Статус Задачи",
@@ -17,6 +19,8 @@ export const titleButtonList: Internationalization = {
     BUILD_SITE_MAP : " Построить карту",
     GET_ZIP : " Получить архив",
     GET_SIZE : " Получить размер",
-    GET_SITE_MAP : " Получить карту"
+    GET_SITE_MAP : " Получить карту",
+    COPY: "Копировать",
+    CLOSE: "Закрыть"
   }
 }

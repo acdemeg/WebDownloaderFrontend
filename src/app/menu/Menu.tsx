@@ -4,14 +4,24 @@ import { SearchOutlined } from '@ant-design/icons';
 import RunTaskMenu from './RunTasksMenu';
 import GetResultMenu from './GetResultMenu';
 import DescriptionMenu from './DescriptionMenu';
-import { GET_STATUS_TASK } from '../Constants';
+import { GET_STATUS_TASK, ONE_TIME_INFO_STATUS_HEADER } from '../Constants';
 import { useContextProvider } from '../ContextProvider';
 import { titleButtonList } from '../internationalization/ButtonTitles';
 
 
 const Menu: React.FC = () =>   {
 
-  const {lang} = useContextProvider();
+  const {lang, input, oneTimeInfoData, setOneTimeInfoData} = useContextProvider();
+
+  const showOneTimeInfo = () => {
+    if(input !== ""){
+      setOneTimeInfoData({
+        ...oneTimeInfoData,
+        visible: true, 
+        headerType: ONE_TIME_INFO_STATUS_HEADER
+      })
+    }
+  }
 
   return (
     <div className='w-full h-72 flex justify-evenly'>
@@ -21,7 +31,7 @@ const Menu: React.FC = () =>   {
            action={GET_STATUS_TASK}
            title={titleButtonList[lang][GET_STATUS_TASK]}
            Icon={SearchOutlined}
-           hanlder={() => {}}/>
+           hanlder={showOneTimeInfo}/>
         <DescriptionMenu />
       </div>
       <GetResultMenu />

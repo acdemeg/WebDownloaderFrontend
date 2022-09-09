@@ -11,9 +11,12 @@ const RunTaskMenu: React.FC = () =>   {
 
   return (
     <div className='flex flex-col justify-evenly'>
-      <MenuButton action={START_DOWNLOAD} title={titleButtonList[lang][START_DOWNLOAD]} Icon={CloudDownloadOutlined} hanlder={() => {}}/>
-      <MenuButton action={ESTIMATE_SIZE} title={titleButtonList[lang][ESTIMATE_SIZE]} Icon={HddOutlined} hanlder={() => {}}/>
-      <MenuButton action={BUILD_SITE_MAP} title={titleButtonList[lang][BUILD_SITE_MAP]} Icon={ForkOutlined} hanlder={() => {}}/>        
+      <MenuButton action={START_DOWNLOAD} title={titleButtonList[lang][START_DOWNLOAD]} Icon={CloudDownloadOutlined} 
+        hanlder={() => {}}/>
+      <MenuButton action={ESTIMATE_SIZE} title={titleButtonList[lang][ESTIMATE_SIZE]} Icon={HddOutlined} 
+        hanlder={() => {}}/>
+      <MenuButton action={BUILD_SITE_MAP} title={titleButtonList[lang][BUILD_SITE_MAP]} Icon={ForkOutlined} 
+        hanlder={() => {}}/>        
     </div>
   );
 }

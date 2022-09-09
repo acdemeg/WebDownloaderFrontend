@@ -1,18 +1,25 @@
 import React, { useContext, useState } from 'react';
-import { Children, ContextState } from './Types';
+import { Children, ContextState, OneTimeInfoType } from './Types';
 import { RUS } from './Constants';
 import { actionsDescList } from './internationalization/ActionDescriptions';
 
-const Context = React.createContext<ContextState>({
-  lang: "",
+
+const initialState = {
+  lang: RUS,
   setLanguage: () => {},
   input: "",
   setInput: () => {},
-  actionDescription: "",
+  actionDescription: actionsDescList.Rus.DEFAULT,
   setDescription: () => {},
   fileURL: "",
-  setFileURL: () => {}
-});
+  setFileURL: () => {},
+  oneTimeInfoData: {
+    headerType: "", value: "", visible: false
+  },
+  setOneTimeInfoData: () => {}
+}
+
+const Context = React.createContext<ContextState>(initialState);
 
 export const useContextProvider = () => {
   return useContext(Context);
@@ -20,14 +27,22 @@ export const useContextProvider = () => {
 
 const ContextProvider: React.FC<Children> = ({ children }) =>   {
 
-  const [lang, setLang] = useState<string>(RUS);
-  const [input, setInput] = useState<string>("");
-  const [actionDescription, setDescription] = useState<string>(actionsDescList.Rus.DEFAULT);
-  const [fileURL, setFileURL] = useState<string>("");
+  const [lang, setLang] = useState<string>(initialState.lang);
+  const [input, setInput] = useState<string>(initialState.input);
+  const [actionDescription, setDescription] = useState<string>(initialState.actionDescription);
+  const [fileURL, setFileURLState] = useState<string>(initialState.fileURL);
+  const [oneTimeInfoData, setOneTimeInfoData] = useState<OneTimeInfoType>(initialState.oneTimeInfoData);
 
   const setLanguage = (lang: string) => {
     setLang(lang);
     setDescription(actionsDescList[lang].DEFAULT);
+  }
+
+  const setFileURL = (fileURL: string) => {
+    if(input !== ""){
+      setFileURLState(fileURL);
+      setInput("");
+    }
   }
 
   return (
@@ -39,7 +54,9 @@ const ContextProvider: React.FC<Children> = ({ children }) =>   {
       actionDescription,
       setDescription,
       fileURL,
-      setFileURL
+      setFileURL,
+      oneTimeInfoData,
+      setOneTimeInfoData
 
     }}>
           {children}

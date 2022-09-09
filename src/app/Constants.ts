@@ -8,3 +8,11 @@ export const GET_SIZE = "GET_SIZE";
 export const GET_SITE_MAP = "GET_SITE_MAP";
 export const ENG = "Eng";
 export const RUS = "Rus";
+
+
+// Button titles constans
+export const COPY = "COPY"
+export const CLOSE = "CLOSE"
+
+// OneTimeInfoHeaderType constants
+export const ONE_TIME_INFO_STATUS_HEADER = "oneTimeInfoStatusHeader";

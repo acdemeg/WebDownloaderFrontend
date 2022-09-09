@@ -1,8 +1,9 @@
 import React from 'react';
+import OneTimeInfo from './components/OneTimeInfo';
 import ContextProvider from './ContextProvider';
 import LangSwitcher from './lang-switcher/LangSwitcher';
 import Logo from './logo/Logo';
-import MainContainer from './MainContainer';
+import MainContainer from './main/MainContainer';
 
 const App: React.FC = () =>   {
   return (
@@ -10,6 +11,7 @@ const App: React.FC = () =>   {
       <LangSwitcher />
       <Logo/>
       <MainContainer />
+      <OneTimeInfo/>
     </ContextProvider>
   );
 }
