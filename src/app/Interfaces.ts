@@ -4,4 +4,5 @@ export interface MenuButtonProps {
   title: string,
   Icon: React.ForwardRefExoticComponent<any>,
   action: string
+  hanlder: () => void
 }

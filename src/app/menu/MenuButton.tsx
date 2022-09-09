@@ -2,16 +2,17 @@ import React from 'react';
 import { Button } from 'antd';
 import { useContextProvider } from '../ContextProvider';
 import { MenuButtonProps } from '../Interfaces';
-import { actionsDescList } from '../internationalization/action-titles';
+import { actionsDescList } from '../internationalization/ActionDescriptions';
 
 
-const MenuButton: React.FC<MenuButtonProps> = ({ title, Icon, action }) => {
+const MenuButton: React.FC<MenuButtonProps> = ({ title, Icon, action, hanlder }) => {
 
   const {lang, setDescription} = useContextProvider();
 
   return (
     <div onMouseEnter={() => setDescription(actionsDescList[lang][action])}
-         onMouseLeave={() => setDescription(actionsDescList[lang]["DEFAULT"])}>
+         onMouseLeave={() => setDescription(actionsDescList[lang]["DEFAULT"])}
+         onClick={hanlder}>
       <Button
         className={`rounded-md h-11 w-48 text-lg hover:text-white`} 
         icon={<Icon style={{ fontSize: '28px'}}/>}>

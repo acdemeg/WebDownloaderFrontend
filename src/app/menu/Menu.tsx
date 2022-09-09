@@ -6,7 +6,7 @@ import GetResultMenu from './GetResultMenu';
 import DescriptionMenu from './DescriptionMenu';
 import { GET_STATUS_TASK } from '../Constants';
 import { useContextProvider } from '../ContextProvider';
-import { titleButtonList } from '../internationalization/button-titles';
+import { titleButtonList } from '../internationalization/ButtonTitles';
 
 
 const Menu: React.FC = () =>   {
@@ -17,7 +17,11 @@ const Menu: React.FC = () =>   {
     <div className='w-full h-72 flex justify-evenly'>
       <RunTaskMenu />
       <div className='flex flex-col justify-around items-center w-1/3'>
-        <MenuButton action={GET_STATUS_TASK} title={titleButtonList[lang][GET_STATUS_TASK]} Icon={SearchOutlined}/>
+        <MenuButton 
+           action={GET_STATUS_TASK}
+           title={titleButtonList[lang][GET_STATUS_TASK]}
+           Icon={SearchOutlined}
+           hanlder={() => {}}/>
         <DescriptionMenu />
       </div>
       <GetResultMenu />

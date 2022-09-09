@@ -1,13 +1,17 @@
 import React, { useContext, useState } from 'react';
 import { Children, ContextState } from './Types';
 import { RUS } from './Constants';
-import { actionsDescList } from './internationalization/action-titles';
+import { actionsDescList } from './internationalization/ActionDescriptions';
 
 const Context = React.createContext<ContextState>({
+  lang: "",
+  setLanguage: () => {},
+  input: "",
+  setInput: () => {},
   actionDescription: "",
   setDescription: () => {},
-  lang: "",
-  setLanguage: () => {}
+  fileURL: "",
+  setFileURL: () => {}
 });
 
 export const useContextProvider = () => {
@@ -17,7 +21,9 @@ export const useContextProvider = () => {
 const ContextProvider: React.FC<Children> = ({ children }) =>   {
 
   const [lang, setLang] = useState<string>(RUS);
-  const [description, setDescription] = useState<string>(actionsDescList.Rus.DEFAULT);
+  const [input, setInput] = useState<string>("");
+  const [actionDescription, setDescription] = useState<string>(actionsDescList.Rus.DEFAULT);
+  const [fileURL, setFileURL] = useState<string>("");
 
   const setLanguage = (lang: string) => {
     setLang(lang);
@@ -26,10 +32,15 @@ const ContextProvider: React.FC<Children> = ({ children }) =>   {
 
   return (
     <Context.Provider value={{
-      actionDescription: description,
+      input,
+      setInput,
+      lang,
+      setLanguage,
+      actionDescription,
       setDescription,
-      lang: lang,
-      setLanguage
+      fileURL,
+      setFileURL
+
     }}>
           {children}
     </Context.Provider>

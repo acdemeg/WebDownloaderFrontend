@@ -4,7 +4,7 @@ export const titleButtonList: Internationalization = {
   Eng: {
     GET_STATUS_TASK: " Status Task",
     START_DOWNLOAD : " Start Download",
-    ESTIMATE_SIZE : " Estimate Size'",
+    ESTIMATE_SIZE : " Estimate Size",
     BUILD_SITE_MAP : " Build Site Map",
     GET_ZIP : " Get Zip",
     GET_SIZE : " Get Size",
