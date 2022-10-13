@@ -25,7 +25,7 @@ export type ResponseDto = {
   result: string
 }
 
-export type ApiMethod = (param: string) => Promise<ResponseDto>;
+export type ApiMethod = (param1: string, param2?: string) => Promise<ResponseDto>;
 
 export type OneTimeInfoType = {
   headerType: string,

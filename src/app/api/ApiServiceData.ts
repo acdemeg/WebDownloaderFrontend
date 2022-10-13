@@ -12,8 +12,8 @@ class AppServiceData {
     return res.data;
   }
 
-  public async statusTask(taskId: string) {
-    return await this.getResourse('/status', { params: { taskId: taskId } });
+  public async statusTask(taskId: string, lang?: string) {
+    return await this.getResourse('/status', { params: { taskId, lang } });
   }
 
   public async requireDownload(uri: string) {

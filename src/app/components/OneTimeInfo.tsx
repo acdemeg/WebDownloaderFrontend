@@ -11,7 +11,7 @@ const {lang, input, setInput, oneTimeInfoData, setOneTimeInfoData} = useContextP
 
 useEffect(() => {
   if(oneTimeInfoData.visible){
-    oneTimeInfoData.apiMethod(input).then(
+    oneTimeInfoData.apiMethod(input, lang).then(
         response => {
           setOneTimeInfoData({ ...oneTimeInfoData, value: response.result });
           setInput("");
