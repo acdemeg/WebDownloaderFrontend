@@ -1,12 +1,12 @@
 import axios from 'axios';
-
+import { ResponseDto } from '../Types';
 
 class AppServiceData {
 
   private readonly base: string = "http://localhost:8080";
   public readonly zipDonwloadApi: string = `${this.base}/zip?taskId=`;
 
-  private async getResourse(url: string, params: any) {
+  private async getResourse(url: string, params: any): Promise<ResponseDto> {
     const res = await axios.get(`${this.base}${url}`, params)
       .catch(err => err);
     return res.data;

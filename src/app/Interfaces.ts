@@ -1,3 +1,4 @@
+import { ApiMethod } from "./Types";
 
 export interface MenuButtonProps {
   bgColor?: string,
@@ -5,4 +6,8 @@ export interface MenuButtonProps {
   Icon: React.ForwardRefExoticComponent<any>,
   action: string
   hanlder: () => void
+}
+
+export interface IShowOneTimeInfo {
+  showOneTimeInfo: (headerType: string, apiMethod: ApiMethod) => void;
 }

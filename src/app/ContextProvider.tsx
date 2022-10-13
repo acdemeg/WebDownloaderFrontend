@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Children, ContextState, OneTimeInfoType } from './Types';
 import { RUS } from './Constants';
 import { actionsDescList } from './internationalization/ActionDescriptions';
+import ApiServiceData from './api/ApiServiceData';
 
 
 const initialState = {
@@ -14,7 +15,7 @@ const initialState = {
   fileURL: "",
   setFileURL: () => {},
   oneTimeInfoData: {
-    headerType: "", value: "", visible: false
+    headerType: "", value: "", visible: false, apiMethod: ApiServiceData.statusTask
   },
   setOneTimeInfoData: () => {}
 }

@@ -1,10 +1,9 @@
 import { Button } from 'antd';
 import React, { useEffect } from 'react';
-import ApiServiceData from '../api/ApiServiceData';
 import { useContextProvider } from '../ContextProvider';
-import { common } from '../internationalization/Common';
 import { titleButtonList } from '../internationalization/ButtonTitles';
 import { CLOSE, COPY } from '../Constants';
+import { common } from '../internationalization/Common';
 
 const OneTimeInfo: React.FC = () =>   {
 
@@ -12,15 +11,15 @@ const {lang, input, setInput, oneTimeInfoData, setOneTimeInfoData} = useContextP
 
 useEffect(() => {
   if(oneTimeInfoData.visible){
-      ApiServiceData.statusTask(input).then(
-        taskId => {
-          setOneTimeInfoData({ ...oneTimeInfoData, value: taskId });
+    oneTimeInfoData.apiMethod(input).then(
+        response => {
+          setOneTimeInfoData({ ...oneTimeInfoData, value: response.result });
           setInput("");
         }
       );
   }
   // eslint-disable-next-line
-}, [oneTimeInfoData.visible])
+}, [oneTimeInfoData.headerType, oneTimeInfoData.visible])
 
 const buttonClasses = "border-2 border-solid mx-3 rounded-md h-11 w-48 text-lg";
 

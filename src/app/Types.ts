@@ -20,9 +20,16 @@ export type Internationalization = {
    }
 }
 
+export type ResponseDto = { 
+  statusCode: number,
+  result: string
+}
+
+export type ApiMethod = (param: string) => Promise<ResponseDto>;
 
 export type OneTimeInfoType = {
   headerType: string,
   value: string,
-  visible: boolean
+  visible: boolean,
+  apiMethod: ApiMethod
 }
