@@ -31,5 +31,6 @@ export type OneTimeInfoType = {
   headerType: string,
   value: string,
   visible: boolean,
-  apiMethod: ApiMethod
+  apiMethod: ApiMethod,
+  click: number
 }

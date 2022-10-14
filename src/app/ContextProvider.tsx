@@ -15,7 +15,7 @@ const initialState = {
   fileURL: "",
   setFileURL: () => {},
   oneTimeInfoData: {
-    headerType: "", value: "", visible: false, apiMethod: ApiServiceData.statusTask
+    headerType: "", value: "", visible: false, apiMethod: ApiServiceData.statusTask, click: 0
   },
   setOneTimeInfoData: () => {}
 }

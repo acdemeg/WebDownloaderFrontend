@@ -21,7 +21,8 @@ const Menu: React.FC = () =>   {
         ...oneTimeInfoData,
         visible: true, 
         headerType: headerType,
-        apiMethod: apiMethod
+        apiMethod: apiMethod,
+        click: Math.random()
       })
     }
   }

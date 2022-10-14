@@ -8,8 +8,8 @@ class AppServiceData {
 
   private async getResourse(url: string, params: any): Promise<ResponseDto> {
     const res = await axios.get(`${this.base}${url}`, params)
-      .catch(err => err);
-    return res.data;
+      .catch(err => err.response);
+    return res.data; 
   }
 
   public async statusTask(taskId: string, lang?: string) {

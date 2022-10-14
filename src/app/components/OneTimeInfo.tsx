@@ -2,7 +2,7 @@ import { Button } from 'antd';
 import React, { useEffect } from 'react';
 import { useContextProvider } from '../ContextProvider';
 import { titleButtonList } from '../internationalization/ButtonTitles';
-import { CLOSE, COPY } from '../Constants';
+import { CLOSE, COPY, ONE_TIME_INFO_ERROR_HEADER } from '../Constants';
 import { common } from '../internationalization/Common';
 
 const OneTimeInfo: React.FC = () =>   {
@@ -13,13 +13,18 @@ useEffect(() => {
   if(oneTimeInfoData.visible){
     oneTimeInfoData.apiMethod(input, lang).then(
         response => {
-          setOneTimeInfoData({ ...oneTimeInfoData, value: response.result });
+          if(response.statusCode < 300){ 
+            setOneTimeInfoData({ ...oneTimeInfoData, value: response.result });
+          }
+          else{ // error
+            setOneTimeInfoData({ ...oneTimeInfoData, headerType: ONE_TIME_INFO_ERROR_HEADER, value: response.result });
+          }
           setInput("");
         }
       );
   }
   // eslint-disable-next-line
-}, [oneTimeInfoData.headerType, oneTimeInfoData.visible])
+}, [oneTimeInfoData.click])
 
 const buttonClasses = "border-2 border-solid mx-3 rounded-md h-11 w-48 text-lg";
 
