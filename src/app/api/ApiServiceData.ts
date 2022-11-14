@@ -4,7 +4,7 @@ import { ResponseDto } from '../Types';
 class AppServiceData {
 
   private readonly base: string = "http://localhost:8080";
-  public readonly zipDonwloadApi: string = `${this.base}/zip?taskId=`;
+  public readonly zipDonwloadApi: string = `${this.base}/zip?fileName=`;
 
   private async getResourse(url: string, params: any): Promise<ResponseDto> {
     const res = await axios.get(`${this.base}${url}`, params)
@@ -18,6 +18,10 @@ class AppServiceData {
 
   public async requireDownload(uri: string) {
     return await this.getResourse('/require', { params: { uri: uri } });
+  }
+
+  public async findZip(taskId: string, lang?: string) {
+    return await this.getResourse('/find', { params: { taskId, lang } });
   }
 
   public async estimateSize(uri: string) {
