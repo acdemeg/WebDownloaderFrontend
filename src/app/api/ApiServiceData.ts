@@ -1,10 +1,10 @@
 import axios from 'axios';
 import { ResponseDto } from '../Types';
 
-class AppServiceData {
+class ApiServiceData {
 
   private readonly base: string = "http://localhost:8080";
-  public readonly zipDonwloadApi: string = `${this.base}/zip?fileName=`;
+  public readonly ZIP_DONWLOAD_API: string = `${this.base}/zip?fileName=`;
 
   private async getResourse(url: string, params: any): Promise<ResponseDto> {
     const res = await axios.get(`${this.base}${url}`, params)
@@ -38,4 +38,4 @@ class AppServiceData {
 }
 
 
-export default new AppServiceData();
+export default new ApiServiceData();

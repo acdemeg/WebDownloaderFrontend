@@ -14,7 +14,7 @@ const GetResultMenu: React.FC<IShowOneTimeInfo> = ({ showOneTimeInfo }) =>   {
   return (
     <div className='flex flex-col justify-evenly'>
       <MenuButton action={GET_ZIP} title={titleButtonList[lang][GET_ZIP]} Icon={FileZipOutlined} 
-        hanlder={() => setFileURL(`${ApiServiceData.zipDonwloadApi}${input}`)}/>
+        hanlder={() => setFileURL(input)}/>
       <MenuButton action={GET_SIZE} title={titleButtonList[lang][GET_SIZE]} Icon={SaveOutlined} 
            hanlder={() => showOneTimeInfo(
             ONE_TIME_INFO_SIZE_HEADER,

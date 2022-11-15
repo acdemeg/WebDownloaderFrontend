@@ -1,5 +1,5 @@
 import { Button } from 'antd';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useContextProvider } from '../ContextProvider';
 import { titleButtonList } from '../internationalization/ButtonTitles';
 import { CLOSE, COPY, ONE_TIME_INFO_ERROR_HEADER } from '../Constants';
@@ -9,18 +9,18 @@ const OneTimeInfo: React.FC = () => {
 
 const {lang, input, setInput, oneTimeInfoData, setOneTimeInfoData} = useContextProvider();
 
-const setTextColor = () => {
-  return (oneTimeInfoData.headerType === ONE_TIME_INFO_ERROR_HEADER) ? "red" : "green";  
-}
+const [textColor, setTextColor] = useState<string>("green");
 
 useEffect(() => {
   if(oneTimeInfoData.visible){
     oneTimeInfoData.apiMethod(input, lang).then(
         response => {
-          if(response.statusCode < 300){ 
+          if(response.statusCode < 400) {
+            setTextColor("green");
             setOneTimeInfoData({ ...oneTimeInfoData, value: response.result });
           }
-          else{ // error
+          else {
+            setTextColor("red");
             setOneTimeInfoData({ ...oneTimeInfoData, headerType: ONE_TIME_INFO_ERROR_HEADER, value: response.result });
           }
           setInput("");
@@ -36,7 +36,7 @@ const buttonClasses = "border-2 border-solid mx-3 rounded-md h-11 w-48 text-lg";
     <div className="border-2 border-solid text-slate-300 text-2xl h-48 w-1/2 min-w-[48rem]
                max-w-4xl mx-auto my-4 rounded-xl flex flex-col justify-evenly items-center">
         <span className="text-3xl">{common[lang][oneTimeInfoData.headerType]}</span>
-        <span className={`text-${setTextColor()}-500`} >{oneTimeInfoData.value}</span>
+        <span className={`text-${textColor}-500`}>{oneTimeInfoData.value}</span>
         <div>
           <Button
             className={`${buttonClasses} hover:text-blue-400 hover:border-blue-400`}

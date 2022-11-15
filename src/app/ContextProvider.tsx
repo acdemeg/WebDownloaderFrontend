@@ -31,19 +31,12 @@ const ContextProvider: React.FC<Children> = ({ children }) =>   {
   const [lang, setLang] = useState<string>(initialState.lang);
   const [input, setInput] = useState<string>(initialState.input);
   const [actionDescription, setDescription] = useState<string>(initialState.actionDescription);
-  const [fileURL, setFileURLState] = useState<string>(initialState.fileURL);
+  const [fileURL, setFileURL] = useState<string>(initialState.fileURL);
   const [oneTimeInfoData, setOneTimeInfoData] = useState<OneTimeInfoType>(initialState.oneTimeInfoData);
 
   const setLanguage = (lang: string) => {
     setLang(lang);
     setDescription(actionsDescList[lang].DEFAULT);
-  }
-
-  const setFileURL = (fileURL: string) => {
-    if(input !== ""){
-      setFileURLState(fileURL);
-      setInput("");
-    }
   }
 
   return (
@@ -58,7 +51,6 @@ const ContextProvider: React.FC<Children> = ({ children }) =>   {
       setFileURL,
       oneTimeInfoData,
       setOneTimeInfoData
-
     }}>
           {children}
     </Context.Provider>
