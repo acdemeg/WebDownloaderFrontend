@@ -6,8 +6,6 @@ export type ContextState = {
   setInput: (input: string) => void,
   actionDescription: string,
   setDescription: (desc: string) => void,
-  fileURL: string,
-  setFileURL: (fileURL: string) => void,
   oneTimeInfoData: OneTimeInfoType
   setOneTimeInfoData: (oneTimeInfoData: OneTimeInfoType) => void,
 }

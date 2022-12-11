@@ -9,23 +9,24 @@ const OneTimeInfo: React.FC = () => {
 
 const {lang, input, setInput, oneTimeInfoData, setOneTimeInfoData} = useContextProvider();
 
+//TODO fix color
 const [textColor, setTextColor] = useState<string>("green");
 
 useEffect(() => {
-  if(oneTimeInfoData.visible){
+  if(oneTimeInfoData.click !== 0){
     oneTimeInfoData.apiMethod(input, lang).then(
-        response => {
-          if(response.statusCode < 400) {
-            setTextColor("green");
-            setOneTimeInfoData({ ...oneTimeInfoData, value: response.result });
-          }
-          else {
-            setTextColor("red");
-            setOneTimeInfoData({ ...oneTimeInfoData, headerType: ONE_TIME_INFO_ERROR_HEADER, value: response.result });
-          }
-          setInput("");
+      response => {
+        if(response.statusCode < 400) {
+          setTextColor("green");
+          setOneTimeInfoData({ ...oneTimeInfoData, value: response.result, visible: true });
         }
-      );
+        else {
+          setTextColor("red");
+          setOneTimeInfoData({ ...oneTimeInfoData, headerType: ONE_TIME_INFO_ERROR_HEADER, value: response.result, visible: true });
+        }
+        setInput("");
+      }
+    );
   }
   // eslint-disable-next-line
 }, [oneTimeInfoData.click])

@@ -6,21 +6,32 @@ import { useContextProvider } from '../ContextProvider';
 import { titleButtonList } from '../internationalization/ButtonTitles';
 import ApiServiceData from '../api/ApiServiceData';
 import { IShowOneTimeInfo } from '../Interfaces';
+import fileLoader from '../FileLoader';
+import { ContextState } from '../Types';
 
-const GetResultMenu: React.FC<IShowOneTimeInfo> = ({ showOneTimeInfo }) =>   {
+const GetResultMenu: React.FC<IShowOneTimeInfo> = ({ showOneTimeInfo }) => {
 
-  const {lang, input, setFileURL} = useContextProvider();
+  const context: ContextState = useContextProvider();
 
   return (
     <div className='flex flex-col justify-evenly'>
-      <MenuButton action={GET_ZIP} title={titleButtonList[lang][GET_ZIP]} Icon={FileZipOutlined} 
-        hanlder={() => setFileURL(input)}/>
-      <MenuButton action={GET_SIZE} title={titleButtonList[lang][GET_SIZE]} Icon={SaveOutlined} 
-           hanlder={() => showOneTimeInfo(
+      <MenuButton 
+        action={GET_ZIP}
+        title={titleButtonList[context.lang][GET_ZIP]} 
+        Icon={FileZipOutlined} 
+        hanlder={() => fileLoader(context)}/>
+      <MenuButton 
+        action={GET_SIZE} 
+        title={titleButtonList[context.lang][GET_SIZE]} 
+        Icon={SaveOutlined} 
+        hanlder={() => showOneTimeInfo(
             ONE_TIME_INFO_SIZE_HEADER,
             ApiServiceData.discoverSize.bind(ApiServiceData)
             )}/>
-      <MenuButton action={GET_SITE_MAP} title={titleButtonList[lang][GET_SITE_MAP]} Icon={ApartmentOutlined} 
+      <MenuButton 
+        action={GET_SITE_MAP} 
+        title={titleButtonList[context.lang][GET_SITE_MAP]} 
+        Icon={ApartmentOutlined} 
            hanlder={() => showOneTimeInfo(
             ONE_TIME_INFO_TASK_HEADER,
             ApiServiceData.mapSite.bind(ApiServiceData)

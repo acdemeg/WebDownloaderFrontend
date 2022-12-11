@@ -1,7 +1,6 @@
 import React from 'react';
 import SearchBlock from './SearchBlock';
 import Menu from '../menu/Menu';
-import DownloadFileIframe from '../components/DownloadFileIframe';
 
 
 const MainContainer: React.FC = () => {
@@ -10,7 +9,6 @@ const MainContainer: React.FC = () => {
         mx-auto rounded-xl flex flex-col justify-start items-center">
       <SearchBlock />
       <Menu/>
-      <DownloadFileIframe />
     </div>
   );
 }

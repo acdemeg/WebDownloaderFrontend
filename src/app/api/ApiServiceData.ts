@@ -4,12 +4,15 @@ import { ResponseDto } from '../Types';
 class ApiServiceData {
 
   private readonly base: string = "http://localhost:8080";
-  public readonly ZIP_DONWLOAD_API: string = `${this.base}/zip?fileName=`;
 
   private async getResourse(url: string, params: any): Promise<ResponseDto> {
     const res = await axios.get(`${this.base}${url}`, params)
       .catch(err => err.response);
     return res.data; 
+  }
+
+  public getZip(fileName: string,) {
+    window.location.href = `${this.base}/zip?fileName=${fileName}`;
   }
 
   public async statusTask(taskId: string, lang?: string) {

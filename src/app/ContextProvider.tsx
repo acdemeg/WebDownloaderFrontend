@@ -5,15 +5,13 @@ import { actionsDescList } from './internationalization/ActionDescriptions';
 import ApiServiceData from './api/ApiServiceData';
 
 
-const initialState = {
+const initialState: ContextState = {
   lang: RUS,
   setLanguage: () => {},
   input: "",
   setInput: () => {},
   actionDescription: actionsDescList.Rus.DEFAULT,
   setDescription: () => {},
-  fileURL: "",
-  setFileURL: () => {},
   oneTimeInfoData: {
     headerType: "", value: "", visible: false, apiMethod: ApiServiceData.statusTask, click: 0
   },
@@ -26,12 +24,11 @@ export const useContextProvider = () => {
   return useContext(Context);
 }
 
-const ContextProvider: React.FC<Children> = ({ children }) =>   {
+const ContextProvider: React.FC<Children> = ({ children }) => {
 
   const [lang, setLang] = useState<string>(initialState.lang);
   const [input, setInput] = useState<string>(initialState.input);
   const [actionDescription, setDescription] = useState<string>(initialState.actionDescription);
-  const [fileURL, setFileURL] = useState<string>(initialState.fileURL);
   const [oneTimeInfoData, setOneTimeInfoData] = useState<OneTimeInfoType>(initialState.oneTimeInfoData);
 
   const setLanguage = (lang: string) => {
@@ -47,8 +44,6 @@ const ContextProvider: React.FC<Children> = ({ children }) =>   {
       setLanguage,
       actionDescription,
       setDescription,
-      fileURL,
-      setFileURL,
       oneTimeInfoData,
       setOneTimeInfoData
     }}>
