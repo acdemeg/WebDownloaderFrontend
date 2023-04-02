@@ -3,7 +3,7 @@ import { ResponseDto } from '../Types';
 
 class ApiServiceData {
 
-  private readonly base: string = "http://localhost:8080";
+  private readonly base: string = 'http://localhost:8080';
 
   private async getResourse(url: string, params: any): Promise<ResponseDto> {
     const res = await axios.get(`${this.base}${url}`, params)

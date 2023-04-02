@@ -20,6 +20,4 @@ export const ONE_TIME_INFO_SIZE_HEADER = "oneTimeInfoSizeHeader";
 export const ONE_TIME_INFO_STATUS_HEADER = "oneTimeInfoStatusHeader";
 export const ONE_TIME_INFO_ERROR_HEADER = "oneTimeInfoErrorHeader";
 export const ONE_TIME_INFO_DOWNLOAD_HEADER = "oneTimeInfoDownloadHeader";
-
 export const ONE_TIME_INFO_BODY_MOCK = "oneTimeInfoBodyMock";
-
