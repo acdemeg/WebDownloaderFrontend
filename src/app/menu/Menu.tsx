@@ -4,11 +4,12 @@ import { SearchOutlined } from '@ant-design/icons';
 import RunTaskMenu from './RunTasksMenu';
 import GetResultMenu from './GetResultMenu';
 import DescriptionMenu from './DescriptionMenu';
-import { GET_STATUS_TASK, ONE_TIME_INFO_STATUS_HEADER  } from '../Constants';
+import { GET_STATUS_TASK, ONE_TIME_INFO_BODY_MOCK, ONE_TIME_INFO_STATUS_HEADER  } from '../Constants';
 import { useContextProvider } from '../ContextProvider';
 import { titleButtonList } from '../internationalization/ButtonTitles';
 import ApiServiceData from '../api/ApiServiceData';
 import { ApiMethod } from '../Types';
+import { common } from '../internationalization/Common';
 
 
 const Menu: React.FC = () =>   {
@@ -19,9 +20,11 @@ const Menu: React.FC = () =>   {
     if(input !== ""){
       setOneTimeInfoData({
         ...oneTimeInfoData,
-        visible: true, 
+        visible: true,
         headerType: headerType,
         apiMethod: apiMethod,
+        value: common[lang][ONE_TIME_INFO_BODY_MOCK],
+        textColor: "blue",
         click: Math.random()
       })
     }

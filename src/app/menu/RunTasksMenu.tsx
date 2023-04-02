@@ -9,7 +9,7 @@ import ApiServiceData from '../api/ApiServiceData';
 
 const RunTaskMenu: React.FC<IShowOneTimeInfo> = ({ showOneTimeInfo }) =>   {
 
-  const {lang} = useContextProvider();
+  const { lang } = useContextProvider();
 
   return (
     <div className='flex flex-col justify-evenly'>

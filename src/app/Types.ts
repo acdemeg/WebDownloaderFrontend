@@ -28,6 +28,7 @@ export type ApiMethod = (param1: string, param2?: string) => Promise<ResponseDto
 export type OneTimeInfoType = {
   headerType: string,
   value: string,
+  textColor: string,
   visible: boolean,
   apiMethod: ApiMethod,
   click: number

@@ -13,7 +13,7 @@ const initialState: ContextState = {
   actionDescription: actionsDescList.Rus.DEFAULT,
   setDescription: () => {},
   oneTimeInfoData: {
-    headerType: "", value: "", visible: false, apiMethod: ApiServiceData.statusTask, click: 0
+    headerType: "", value: "", textColor: "blue", visible: false, apiMethod: ApiServiceData.statusTask, click: 0
   },
   setOneTimeInfoData: () => {}
 }

@@ -7,7 +7,7 @@ import { actionsDescList } from '../internationalization/ActionDescriptions';
 
 const MenuButton: React.FC<MenuButtonProps> = ({ title, Icon, action, hanlder }) => {
 
-  const {lang, setDescription} = useContextProvider();
+  const { lang, setDescription } = useContextProvider();
 
   return (
     <div onMouseEnter={() => setDescription(actionsDescList[lang][action])}
