@@ -14,7 +14,7 @@ import { common } from '../internationalization/Common'
 const Menu: React.FC = () => {
   const { lang, input, oneTimeInfoData, setOneTimeInfoData } = useContextProvider()
 
-  const showOneTimeInfo = (headerType: string, apiMethod: ApiMethod) => {
+  const showOneTimeInfo = (headerType: string, apiMethod: ApiMethod): void => {
     if (input !== '') {
       setOneTimeInfoData({
         ...oneTimeInfoData,

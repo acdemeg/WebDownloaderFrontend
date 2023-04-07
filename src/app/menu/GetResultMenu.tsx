@@ -18,6 +18,7 @@ const GetResultMenu: React.FC<IShowOneTimeInfo> = ({ showOneTimeInfo }) => {
         action={GET_ZIP}
         title={titleButtonList[context.lang][GET_ZIP]}
         Icon={FileZipOutlined}
+        // eslint-disable-next-line @typescript-eslint/no-misused-promises
         hanlder={async () => { await fileLoader(context) }}/>
       <MenuButton
         action={GET_SIZE}

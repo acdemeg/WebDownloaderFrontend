@@ -19,8 +19,8 @@ const initialState: ContextState = {
 
 const Context = React.createContext<ContextState>(initialState)
 
-export const useContextProvider = () => {
-  return useContext(Context)
+export const useContextProvider = (): ContextState => {
+  return useContext<ContextState>(Context)
 }
 
 const ContextProvider: React.FC<Children> = ({ children }) => {
@@ -29,7 +29,7 @@ const ContextProvider: React.FC<Children> = ({ children }) => {
   const [actionDescription, setDescription] = useState<string>(initialState.actionDescription)
   const [oneTimeInfoData, setOneTimeInfoData] = useState<OneTimeInfoType>(initialState.oneTimeInfoData)
 
-  const setLanguage = (lang: string) => {
+  const setLanguage = (lang: string): void => {
     setLang(lang)
     setDescription(actionsDescList[lang].DEFAULT)
   }

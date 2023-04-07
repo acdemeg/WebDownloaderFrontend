@@ -30,7 +30,7 @@ const OneTimeInfo: React.FC = () => {
           }
           setInput('')
         }
-      )
+      ).catch(err => { console.log(err) })
     }
   // eslint-disable-next-line
 }, [oneTimeInfoData.click])
@@ -46,7 +46,7 @@ const OneTimeInfo: React.FC = () => {
         <div>
           <Button
             className={`${buttonClasses} hover:text-blue-400 hover:border-blue-400`}
-            onClick={() => { navigator.clipboard.writeText(oneTimeInfoData.value) }}>
+            onClick={() => { navigator.clipboard.writeText(oneTimeInfoData.value).catch(e => { console.log(e) }) }}>
             {titleButtonList[lang][COPY]}
           </Button>
           <Button danger
