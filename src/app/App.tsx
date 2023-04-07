@@ -5,7 +5,7 @@ import LangSwitcher from './lang-switcher/LangSwitcher';
 import Logo from './logo/Logo';
 import MainContainer from './main/MainContainer';
 
-const App: React.FC = () =>   {
+const App: React.FC = () => {
   return (
     <ContextProvider>
       <LangSwitcher />
