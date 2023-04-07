@@ -1,16 +1,16 @@
 
-export type ContextState = {
-  lang: string,
-  setLanguage: (lang: string) => void,
-  input: string,
-  setInput: (input: string) => void,
-  actionDescription: string,
-  setDescription: (desc: string) => void,
+export interface ContextState {
+  lang: Extract<keyof Internationalization, string>
+  setLanguage: (lang: string) => void
+  input: string
+  setInput: (input: string) => void
+  actionDescription: string
+  setDescription: (desc: string) => void
   oneTimeInfoData: OneTimeInfoType
-  setOneTimeInfoData: (oneTimeInfoData: OneTimeInfoType) => void,
+  setOneTimeInfoData: (oneTimeInfoData: OneTimeInfoType) => void
 }
 
-export type Children = { children: React.ReactNode }
+export interface Children { children: React.ReactNode }
 
 export type Internationalization = {
   [language: string]: {
@@ -18,18 +18,18 @@ export type Internationalization = {
    }
 }
 
-export type ResponseDto = { 
-  statusCode: number,
+export interface ResponseDto {
+  statusCode: number
   result: string
 }
 
-export type ApiMethod = (param1: string, param2?: string) => Promise<ResponseDto>;
+export type ApiMethod = (param1: string, param2?: string) => Promise<ResponseDto>
 
-export type OneTimeInfoType = {
-  headerType: string,
-  value: string,
-  textColor: string,
-  visible: boolean,
-  apiMethod: ApiMethod,
+export interface OneTimeInfoType {
+  headerType: string
+  value: string
+  textColor: string
+  visible: boolean
+  apiMethod: ApiMethod
   click: number
 }

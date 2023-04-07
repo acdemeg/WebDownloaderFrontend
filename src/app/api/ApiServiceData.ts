@@ -1,44 +1,42 @@
-import axios from 'axios';
-import { ResponseDto } from '../Types';
+import axios from 'axios'
+import { type ResponseDto } from '../Types'
 
 class ApiServiceData {
+  private readonly base: string = 'http://localhost:8080'
 
-  private readonly base: string = 'http://localhost:8080';
-
-  private async getResourse(url: string, params: any): Promise<ResponseDto> {
+  private async getResourse (url: string, params: any): Promise<ResponseDto> {
     const res = await axios.get(`${this.base}${url}`, params)
-      .catch(err => err.response);
-    return res.data; 
+      .catch(err => err.response)
+    return res.data
   }
 
-  public getZip(fileName: string,) {
-    window.location.href = `${this.base}/zip?fileName=${fileName}`;
+  public getZip (fileName: string): void {
+    window.location.href = `${this.base}/zip?fileName=${fileName}`
   }
 
-  public async statusTask(taskId: string, lang?: string) {
-    return await this.getResourse('/status', { params: { taskId, lang } });
+  public async statusTask (taskId: string, lang?: string): Promise<ResponseDto> {
+    return await this.getResourse('/status', { params: { taskId, lang } })
   }
 
-  public async requireDownload(uri: string) {
-    return await this.getResourse('/require', { params: { uri: uri } });
+  public async requireDownload (uri: string): Promise<ResponseDto> {
+    return await this.getResourse('/require', { params: { uri } })
   }
 
-  public async findZip(taskId: string, lang?: string) {
-    return await this.getResourse('/find', { params: { taskId, lang } });
+  public async findZip (taskId: string, lang?: string): Promise<ResponseDto> {
+    return await this.getResourse('/find', { params: { taskId, lang } })
   }
 
-  public async estimateSize(uri: string) {
-    return await this.getResourse('/estimate', { params: { uri: uri } });
+  public async estimateSize (uri: string): Promise<ResponseDto> {
+    return await this.getResourse('/estimate', { params: { uri } })
   }
 
-  public async discoverSize(taskId: string) {
-    return await this.getResourse('/size', { params: { taskId: taskId } });
+  public async discoverSize (taskId: string): Promise<ResponseDto> {
+    return await this.getResourse('/size', { params: { taskId } })
   }
 
-  public async mapSite(uri: string) {
-    return await this.getResourse('/map', { params: { uri: uri } });
+  public async mapSite (uri: string): Promise<ResponseDto> {
+    return await this.getResourse('/map', { params: { uri } })
   }
 }
 
-
-export default new ApiServiceData();
+export default new ApiServiceData()

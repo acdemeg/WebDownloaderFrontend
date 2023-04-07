@@ -1,39 +1,37 @@
-import React, { useContext, useState } from 'react';
-import { Children, ContextState, OneTimeInfoType } from './Types';
-import { RUS } from './Constants';
-import { actionsDescList } from './internationalization/ActionDescriptions';
-import ApiServiceData from './api/ApiServiceData';
-
+import React, { useContext, useState } from 'react'
+import { type Children, type ContextState, type OneTimeInfoType } from './Types'
+import { RUS } from './Constants'
+import { actionsDescList } from './internationalization/ActionDescriptions'
+import ApiServiceData from './api/ApiServiceData'
 
 const initialState: ContextState = {
   lang: RUS,
   setLanguage: () => {},
-  input: "",
+  input: '',
   setInput: () => {},
   actionDescription: actionsDescList.Rus.DEFAULT,
   setDescription: () => {},
   oneTimeInfoData: {
-    headerType: "", value: "", textColor: "blue", visible: false, apiMethod: ApiServiceData.statusTask, click: 0
+    headerType: '', value: '', textColor: 'blue', visible: false, apiMethod: ApiServiceData.statusTask, click: 0
   },
   setOneTimeInfoData: () => {}
 }
 
-const Context = React.createContext<ContextState>(initialState);
+const Context = React.createContext<ContextState>(initialState)
 
 export const useContextProvider = () => {
-  return useContext(Context);
+  return useContext(Context)
 }
 
 const ContextProvider: React.FC<Children> = ({ children }) => {
-
-  const [lang, setLang] = useState<string>(initialState.lang);
-  const [input, setInput] = useState<string>(initialState.input);
-  const [actionDescription, setDescription] = useState<string>(initialState.actionDescription);
-  const [oneTimeInfoData, setOneTimeInfoData] = useState<OneTimeInfoType>(initialState.oneTimeInfoData);
+  const [lang, setLang] = useState<string>(initialState.lang)
+  const [input, setInput] = useState<string>(initialState.input)
+  const [actionDescription, setDescription] = useState<string>(initialState.actionDescription)
+  const [oneTimeInfoData, setOneTimeInfoData] = useState<OneTimeInfoType>(initialState.oneTimeInfoData)
 
   const setLanguage = (lang: string) => {
-    setLang(lang);
-    setDescription(actionsDescList[lang].DEFAULT);
+    setLang(lang)
+    setDescription(actionsDescList[lang].DEFAULT)
   }
 
   return (
@@ -49,7 +47,7 @@ const ContextProvider: React.FC<Children> = ({ children }) => {
     }}>
           {children}
     </Context.Provider>
-  );
+  )
 }
 
-export default ContextProvider;
+export default ContextProvider
