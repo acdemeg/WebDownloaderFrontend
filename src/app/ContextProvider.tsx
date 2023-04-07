@@ -1,20 +1,20 @@
 import React, { useContext, useState } from 'react'
 import { type Children, type ContextState, type OneTimeInfoType } from './Types'
 import { RUS } from './Constants'
-import { actionsDescList } from './internationalization/ActionDescriptions'
+import { actionsDescList } from '../internationalization/ActionDescriptions'
 import ApiServiceData from './api/ApiServiceData'
 
 const initialState: ContextState = {
   lang: RUS,
-  setLanguage: () => {},
+  setLanguage: () => { },
   input: '',
-  setInput: () => {},
+  setInput: () => { },
   actionDescription: actionsDescList.Rus.DEFAULT,
-  setDescription: () => {},
+  setDescription: () => { },
   oneTimeInfoData: {
     headerType: '', value: '', textColor: 'blue', visible: false, apiMethod: ApiServiceData.statusTask, click: 0
   },
-  setOneTimeInfoData: () => {}
+  setOneTimeInfoData: () => { }
 }
 
 const Context = React.createContext<ContextState>(initialState)
@@ -45,7 +45,7 @@ const ContextProvider: React.FC<Children> = ({ children }) => {
       oneTimeInfoData,
       setOneTimeInfoData
     }}>
-          {children}
+      {children}
     </Context.Provider>
   )
 }

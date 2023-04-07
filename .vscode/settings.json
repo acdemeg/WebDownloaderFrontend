@@ -1,5 +1,6 @@
 {
   "search.exclude": {
     "**/*.yarn/": true
-  }
+  },
+  "editor.formatOnSave": true
 }

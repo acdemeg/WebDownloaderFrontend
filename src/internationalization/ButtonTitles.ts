@@ -1,4 +1,4 @@
-import { type Internationalization } from '../Types'
+import { type Internationalization } from '../app/Types'
 
 export const titleButtonList: Internationalization = {
   Eng: {

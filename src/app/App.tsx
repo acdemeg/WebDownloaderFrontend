@@ -1,17 +1,19 @@
 import React from 'react'
-import OneTimeInfo from './components/OneTimeInfo'
+// import OneTimeInfo from './components/OneTimeInfo'
+// import LangSwitcher from './lang-switcher/LangSwitcher'
+// import Logo from './logo/Logo'
+// import MainContainer from './main/MainContainer'
+import Sitemap from './sitemap/Sitemap'
 import ContextProvider from './ContextProvider'
-import LangSwitcher from './lang-switcher/LangSwitcher'
-import Logo from './logo/Logo'
-import MainContainer from './main/MainContainer'
 
 const App: React.FC = () => {
   return (
     <ContextProvider>
-      <LangSwitcher />
+      {/* <LangSwitcher />
       <Logo/>
       <MainContainer />
-      <OneTimeInfo/>
+      <OneTimeInfo/> */}
+      <Sitemap />
     </ContextProvider>
   )
 }

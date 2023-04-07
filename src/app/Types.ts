@@ -12,11 +12,7 @@ export interface ContextState {
 
 export interface Children { children: React.ReactNode }
 
-export type Internationalization = {
-  [language: string]: {
-    [actionType: string]:  string
-   }
-}
+export type Internationalization = Record<string, Record<string, string>>
 
 export interface ResponseDto {
   statusCode: number

@@ -7,7 +7,7 @@ const MainContainer: React.FC = () => {
     <div className="bg-stone-300 h-96 w-1/2 min-w-[48rem] max-w-4xl
         mx-auto rounded-xl flex flex-col justify-start items-center">
       <SearchBlock />
-      <Menu/>
+      <Menu />
     </div>
   )
 }

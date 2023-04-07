@@ -8,11 +8,11 @@ const LangSwitcher: React.FC = () => {
   return (
     <div className="switch mr-0">
       <input id="language-toggle" className="check-toggle check-toggle-round-flat" type="checkbox"
-        onClick={() => { setLanguage((lang === ENG) ? RUS : ENG) }}/>
-      <label htmlFor="language-toggle"/>
+        onClick={() => { setLanguage((lang === ENG) ? RUS : ENG) }} />
+      <label htmlFor="language-toggle" />
       <span className="on">RUS</span>
       <span className="off">ENG</span>
-  </div>
+    </div>
   )
 }
 
