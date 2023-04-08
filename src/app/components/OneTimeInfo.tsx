@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import { useContextProvider } from '../ContextProvider'
 import { titleButtonList } from '../../internationalization/ButtonTitles'
 import { CLOSE, COPY, ONE_TIME_INFO_ERROR_HEADER } from '../Constants'
-import { common } from '../../internationalization/Common'
+import { common } from '../../internationalization/Captions'
 
 const OneTimeInfo: React.FC = () => {
   const { lang, input, setInput, oneTimeInfoData, setOneTimeInfoData } = useContextProvider()

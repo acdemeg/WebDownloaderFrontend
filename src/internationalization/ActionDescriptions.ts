@@ -1,7 +1,9 @@
+import { ENG, RUS } from '../app/Constants'
 import { type Internationalization } from '../app/Types'
 
+
 export const actionsDescList: Internationalization = {
-  Eng: {
+  [ENG]: {
     DEFAULT: 'The application is designed to create copies (mirrors) of websites and download them as a zip-archive. After unpacking the archive, open the index.html file in your browser to browse the site locally.',
     GET_STATUS_TASK: 'Find out the status of a running task by its ID.',
     START_DOWNLOAD: 'Start downloading the static content of the specified site.',
@@ -11,7 +13,7 @@ export const actionsDescList: Internationalization = {
     GET_SIZE: 'Find out the approximate size of the site data that will be downloaded (if the evaluation was successful).',
     GET_SITE_MAP: 'Get a sitemap (if the build was successful).'
   },
-  Rus: {
+  [RUS]: {
     DEFAULT: 'Приложение предназначено для создания копий(зеркал) web-сайтов и их скачивания в виде zip-архива. После распаковки архива откройте файл index.html в вашем браузере для локального простомтра сайта.',
     GET_STATUS_TASK: 'Узнать статус выполняемой задачи по её ID.',
     START_DOWNLOAD: 'Начать загрузку статического содержимого указанного сайта.',

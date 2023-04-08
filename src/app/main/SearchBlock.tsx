@@ -1,7 +1,7 @@
 import React from 'react'
 import { Input } from 'antd'
 import { useContextProvider } from '../ContextProvider'
-import { common } from '../../internationalization/Common'
+import { common } from '../../internationalization/Captions'
 
 const SearchBlock: React.FC = () => {
   const { lang, input, setInput } = useContextProvider()

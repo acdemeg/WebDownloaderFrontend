@@ -1,7 +1,8 @@
 import { type Internationalization } from '../app/Types'
+import { ENG, RUS } from '../app/Constants'
 
 export const titleButtonList: Internationalization = {
-  Eng: {
+  [ENG]: {
     GET_STATUS_TASK: ' Status Task',
     START_DOWNLOAD: ' Start Download',
     ESTIMATE_SIZE: ' Estimate Size',
@@ -12,7 +13,7 @@ export const titleButtonList: Internationalization = {
     COPY: 'Copy',
     CLOSE: 'Close'
   },
-  Rus: {
+  [RUS]: {
     GET_STATUS_TASK: ' Статус Задачи',
     START_DOWNLOAD: ' Начать Загрузку',
     ESTIMATE_SIZE: ' Оценка размера',

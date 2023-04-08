@@ -9,7 +9,7 @@ const initialState: ContextState = {
   setLanguage: () => { },
   input: '',
   setInput: () => { },
-  actionDescription: actionsDescList.Rus.DEFAULT,
+  actionDescription: actionsDescList[RUS].DEFAULT,
   setDescription: () => { },
   oneTimeInfoData: {
     headerType: '', value: '', textColor: 'blue', visible: false, apiMethod: ApiServiceData.statusTask, click: 0

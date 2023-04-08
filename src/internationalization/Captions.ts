@@ -1,7 +1,8 @@
 import { type Internationalization } from '../app/Types'
+import { ENG, RUS } from '../app/Constants'
 
 export const common: Internationalization = {
-  Eng: {
+  [ENG]: {
     placeholder: 'To Enter site link otherwise task ID',
     oneTimeInfoTaskHeader: 'Task ID',
     oneTimeInfoSizeHeader: 'The resource size is approximately equal to',
@@ -10,7 +11,7 @@ export const common: Internationalization = {
     oneTimeInfoDownloadHeader: 'Download start...',
     oneTimeInfoBodyMock: 'Loading...'
   },
-  Rus: {
+  [RUS]: {
     placeholder: 'Введите адрес сайта либо ID задачи',
     oneTimeInfoTaskHeader: 'ID Задачи',
     oneTimeInfoSizeHeader: 'Размер ресурса приблизительно равен',
