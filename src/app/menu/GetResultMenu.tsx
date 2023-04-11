@@ -1,13 +1,12 @@
 import React from 'react'
 import MenuButton from './MenuButton'
 import { FileZipOutlined, ApartmentOutlined, SaveOutlined } from '@ant-design/icons'
-import { GET_SIZE, GET_ZIP, GET_SITE_MAP, ONE_TIME_INFO_SIZE_HEADER, ONE_TIME_INFO_TASK_HEADER } from '../Constants'
+import { GET_SIZE, GET_ZIP, GET_SITE_MAP, ONE_TIME_INFO_SIZE_HEADER } from '../Constants'
 import { useContextProvider } from '../ContextProvider'
 import { titleButtonList } from '../../internationalization/ButtonTitles'
 import ApiServiceData from '../api/ApiServiceData'
-import { type IShowOneTimeInfo } from '../Interfaces'
+import { type IShowOneTimeInfo, type ContextState } from '../Types'
 import fileLoader from '../FileLoader'
-import { type ContextState } from '../Types'
 
 const GetResultMenu: React.FC<IShowOneTimeInfo> = ({ showOneTimeInfo }) => {
   const context: ContextState = useContextProvider()
@@ -34,12 +33,8 @@ const GetResultMenu: React.FC<IShowOneTimeInfo> = ({ showOneTimeInfo }) => {
         action={GET_SITE_MAP}
         title={titleButtonList[context.lang][GET_SITE_MAP]}
         Icon={ApartmentOutlined}
-        hanlder={() => {
-          showOneTimeInfo(
-            ONE_TIME_INFO_TASK_HEADER,
-            ApiServiceData.mapSite.bind(ApiServiceData)
-          )
-        }} />
+        hanlder={() => { context.setSiteMap({ ...context.siteMap, visible: true }) }}
+      />
     </div>
   )
 }

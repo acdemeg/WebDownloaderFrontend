@@ -1,3 +1,4 @@
+import { type Edge, type Node } from 'reactflow'
 
 export interface ContextState {
   lang: Extract<keyof Internationalization, string>
@@ -8,18 +9,26 @@ export interface ContextState {
   setDescription: (desc: string) => void
   oneTimeInfoData: OneTimeInfoType
   setOneTimeInfoData: (oneTimeInfoData: OneTimeInfoType) => void
+  siteMap: IChartSite
+  setSiteMap: (siteMap: IChartSite) => void
 }
 
-export interface Children { children: React.ReactNode }
+export interface MenuButtonProps {
+  bgColor?: string
+  title: string
+  Icon: React.ForwardRefExoticComponent<any>
+  action: string
+  hanlder: () => void
+}
 
-export type Internationalization = Record<string, Record<string, string>>
+export interface IShowOneTimeInfo {
+  showOneTimeInfo: (headerType: string, apiMethod: ApiMethod) => void
+}
 
 export interface ResponseDto {
   statusCode: number
   result: string
 }
-
-export type ApiMethod = (param1: string, param2?: string) => Promise<ResponseDto>
 
 export interface OneTimeInfoType {
   headerType: string
@@ -29,3 +38,21 @@ export interface OneTimeInfoType {
   apiMethod: ApiMethod
   click: number
 }
+
+export interface IMapSite {
+  statusCode: number
+  nodes: Node[]
+  edges: Edge[]
+}
+
+export interface IChartSite {
+  siteGraph: IMapSite
+  visible: boolean
+  apiMethod: ApiMapSite
+}
+
+export interface Children { children: React.ReactNode }
+
+export type Internationalization = Record<string, Record<string, string>>
+export type ApiMethod = (param1: string, param2?: string) => Promise<ResponseDto>
+export type ApiMapSite = (param1: string) => Promise<IMapSite>

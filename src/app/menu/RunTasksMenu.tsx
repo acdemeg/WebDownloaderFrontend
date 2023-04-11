@@ -4,7 +4,7 @@ import { CloudDownloadOutlined, HddOutlined, ForkOutlined } from '@ant-design/ic
 import { START_DOWNLOAD, ESTIMATE_SIZE, BUILD_SITE_MAP, ONE_TIME_INFO_TASK_HEADER } from '../Constants'
 import { titleButtonList } from '../../internationalization/ButtonTitles'
 import { useContextProvider } from '../ContextProvider'
-import { type IShowOneTimeInfo } from '../Interfaces'
+import { type IShowOneTimeInfo } from '../Types'
 import ApiServiceData from '../api/ApiServiceData'
 
 const RunTaskMenu: React.FC<IShowOneTimeInfo> = ({ showOneTimeInfo }) => {

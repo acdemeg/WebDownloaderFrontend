@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button } from 'antd'
 import { useContextProvider } from '../ContextProvider'
-import { type MenuButtonProps } from '../Interfaces'
+import { type MenuButtonProps } from '../Types'
 import { actionsDescList } from '../../internationalization/ActionDescriptions'
 
 const MenuButton: React.FC<MenuButtonProps> = ({ title, Icon, action, hanlder }) => {

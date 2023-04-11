@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { type Children, type ContextState, type OneTimeInfoType } from './Types'
+import { type IChartSite, type Children, type ContextState, type OneTimeInfoType } from './Types'
 import { RUS } from './Constants'
 import { actionsDescList } from '../internationalization/ActionDescriptions'
 import ApiServiceData from './api/ApiServiceData'
@@ -14,7 +14,9 @@ const initialState: ContextState = {
   oneTimeInfoData: {
     headerType: '', value: '', textColor: 'blue', visible: false, apiMethod: ApiServiceData.statusTask, click: 0
   },
-  setOneTimeInfoData: () => { }
+  setOneTimeInfoData: () => { },
+  siteMap: { siteGraph: { statusCode: 200, nodes: [], edges: [] }, visible: false, apiMethod: ApiServiceData.getChart },
+  setSiteMap: () => { }
 }
 
 const Context = React.createContext<ContextState>(initialState)
@@ -28,6 +30,7 @@ const ContextProvider: React.FC<Children> = ({ children }) => {
   const [input, setInput] = useState<string>(initialState.input)
   const [actionDescription, setDescription] = useState<string>(initialState.actionDescription)
   const [oneTimeInfoData, setOneTimeInfoData] = useState<OneTimeInfoType>(initialState.oneTimeInfoData)
+  const [siteMap, setSiteMap] = useState<IChartSite>(initialState.siteMap)
 
   const setLanguage = (lang: string): void => {
     setLang(lang)
@@ -43,7 +46,9 @@ const ContextProvider: React.FC<Children> = ({ children }) => {
       actionDescription,
       setDescription,
       oneTimeInfoData,
-      setOneTimeInfoData
+      setOneTimeInfoData,
+      siteMap,
+      setSiteMap
     }}>
       {children}
     </Context.Provider>

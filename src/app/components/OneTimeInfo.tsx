@@ -9,6 +9,7 @@ const OneTimeInfo: React.FC = () => {
   const { lang, input, setInput, oneTimeInfoData, setOneTimeInfoData } = useContextProvider()
 
   useEffect(() => {
+    console.log('oneTimeInfo effect')
     if (oneTimeInfoData.click !== 0) {
       oneTimeInfoData.apiMethod(input, lang).then(
         response => {

@@ -1,9 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import ReactFlow, {
   Controls,
   Background,
-  useNodesState,
-  useEdgesState,
   ConnectionLineType,
   type Edge,
   type Node,
@@ -11,96 +9,33 @@ import ReactFlow, {
 } from 'reactflow'
 import dagre from 'dagre'
 import 'reactflow/dist/style.css'
+import { useContextProvider } from '../ContextProvider'
 
-const position = { x: 0, y: 0 };
-const edgeType = 'smoothstep';
+const link = <a href='https://locallhost.com/' target='_blank' rel="noreferrer" className='hover:text-neutral-50'>link</a>
 
-const initialNodes: Node[] = [
-  {
-    id: '1',
-    type: 'input',
-    data: { label: 'input' },
-    position,
-  },
-  {
-    id: '2',
-    data: { label: 'node 2' },
-    position,
-  },
-  {
-    id: '2a',
-    data: { label: 'node 2a' },
-    position,
-  },
-  {
-    id: '2b',
-    data: { label: 'node 2b' },
-    position,
-  },
-  {
-    id: '2c',
-    data: { label: 'node 2c' },
-    position,
-  },
-  {
-    id: '3',
-    data: { label: 'node 3' },
-    position,
-  },
-  {
-    id: '4',
-    data: { label: 'node 4' },
-    position,
-  },
-  {
-    id: '5',
-    data: { label: 'node 5' },
-    position,
-  },
-  {
-    id: '6',
-    type: 'output',
-    data: { label: 'output' },
-    position,
-  }
-];
-
-const initialEdges: Edge[] = [
-  { id: 'e12', source: '1', target: '2', type: edgeType },
-  { id: 'e13', source: '1', target: '3', type: edgeType },
-  { id: 'e22a', source: '2', target: '2a', type: edgeType },
-  { id: 'e22b', source: '2', target: '2b', type: edgeType },
-  { id: 'e22c', source: '2', target: '2c', type: edgeType },
-  { id: 'e46', source: '4', target: '6', type: edgeType },
-  { id: 'e56', source: '5', target: '6', type: edgeType },
-  { id: '3-4', source: '3', target: '4', type: edgeType },
-  { id: '3-5', source: '3', target: '5', type: edgeType },
-
-];
-
-const dagreGraph = new dagre.graphlib.Graph();
-dagreGraph.setDefaultEdgeLabel(() => ({}));
-
-const nodeWidth = 172;
-const nodeHeight = 36;
+const dagreGraph = new dagre.graphlib.Graph()
+dagreGraph.setDefaultEdgeLabel(() => ({}))
 
 const getLayoutedElements = (nodes: Node[], edges: Edge[]): { nodes: Node[], edges: Edge[] } => {
-  dagreGraph.setGraph({ rankdir: 'TB' });
+  const nodeWidth = 172
+  const nodeHeight = 36
+  dagreGraph.setGraph({ rankdir: 'TB' })
 
   nodes.forEach((node) => {
-    dagreGraph.setNode(node.id, { width: nodeWidth, height: nodeHeight });
+    node.data.label = link
+    dagreGraph.setNode(node.id, { width: nodeWidth, height: nodeHeight })
   });
 
   edges.forEach((edge) => {
-    dagreGraph.setEdge(edge.source, edge.target);
+    dagreGraph.setEdge(edge.source, edge.target)
   });
 
   dagre.layout(dagreGraph);
 
   nodes.forEach((node) => {
-    const nodeWithPosition = dagreGraph.node(node.id);
-    node.targetPosition = Position.Top;
-    node.sourcePosition = Position.Bottom;
+    const nodeWithPosition = dagreGraph.node(node.id)
+    node.targetPosition = Position.Top
+    node.sourcePosition = Position.Bottom
     node.position = {
       x: nodeWithPosition.x - nodeWidth / 2,
       y: nodeWithPosition.y - nodeHeight / 2,
@@ -112,23 +47,43 @@ const getLayoutedElements = (nodes: Node[], edges: Edge[]): { nodes: Node[], edg
   return { nodes, edges };
 };
 
-const { nodes: layoutedNodes, edges: layoutedEdges } = getLayoutedElements(initialNodes, initialEdges);
 
 const Sitemap: React.FC = () => {
 
-  const [nodes, ,] = useNodesState(layoutedNodes);
-  const [edges, ,] = useEdgesState(layoutedEdges);
+  const { input, siteMap, setSiteMap } = useContextProvider()
+
+  useEffect(() => {
+    console.log('siteMap effect')
+    siteMap.apiMethod(input).then(
+      response => {
+        if (response.statusCode < 400) {
+          const graph = getLayoutedElements(response.nodes, response.edges)
+          setSiteMap({
+            ...siteMap, siteGraph: {
+              nodes: graph.nodes,
+              edges: graph.edges,
+              statusCode: response.statusCode
+            },
+            visible: true
+          })
+        }
+      }
+    ).catch(err => { console.log(err) })
+  }, [])
 
   return (
-    <div style={{ width: '100vw', height: '100vh' }}>
+    <div className="border-2 border-solid text-slate-300 text-2xl h-48 w-1/2 min-w-[48rem]
+              max-w-4xl mx-auto my-4 rounded-xl flex flex-col justify-evenly items-center">
       <ReactFlow
-        nodes={nodes}
-        edges={edges}
+        nodes={siteMap.siteGraph.nodes}
+        edges={siteMap.siteGraph.edges}
         connectionLineType={ConnectionLineType.SmoothStep}
         fitView={true}
+        nodesConnectable={false}
+
       >
         <Controls />
-        <Background gap={12} size={1} />
+        <Background gap={20} size={1} />
       </ReactFlow>
     </div>
   );
