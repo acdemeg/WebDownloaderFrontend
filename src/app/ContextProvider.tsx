@@ -15,7 +15,7 @@ const initialState: ContextState = {
     headerType: '', value: '', textColor: 'blue', visible: false, apiMethod: ApiServiceData.statusTask, click: 0
   },
   setOneTimeInfoData: () => { },
-  siteMap: { siteGraph: { statusCode: 200, nodes: [], edges: [] }, visible: false, apiMethod: ApiServiceData.getChart },
+  siteMap: { siteGraph: { statusCode: 200, nodes: [], edges: [] }, visible: false, apiMethod: ApiServiceData.getChart, click: 0 },
   setSiteMap: () => { }
 }
 

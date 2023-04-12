@@ -17,8 +17,23 @@ html {
   line-height: inherit;
 }
 
-
 body {
   background-color: rgb(23 23 23);
   font-family: "Comic";
+}
+
+@layer components {
+  
+  .container {
+    @apply border-2 border-solid text-slate-300 text-2xl min-w-[48rem] mx-auto my-4 rounded-xl flex flex-col justify-evenly items-center;
+  }
+
+  .menu-button {
+    @apply border-2 border-solid mx-3 rounded-md h-11 w-48 text-lg
+  }
+
+  .graph {
+    min-height: 300px;
+    height: 96vh;
+  }
 }

@@ -49,6 +49,7 @@ export interface IChartSite {
   siteGraph: IMapSite
   visible: boolean
   apiMethod: ApiMapSite
+  click: number
 }
 
 export interface Children { children: React.ReactNode }

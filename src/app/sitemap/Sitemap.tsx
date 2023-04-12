@@ -8,10 +8,10 @@ import ReactFlow, {
   Position
 } from 'reactflow'
 import dagre from 'dagre'
+import { CloseOutlined } from '@ant-design/icons'
 import 'reactflow/dist/style.css'
 import { useContextProvider } from '../ContextProvider'
 
-const link = <a href='https://locallhost.com/' target='_blank' rel="noreferrer" className='hover:text-neutral-50'>link</a>
 
 const dagreGraph = new dagre.graphlib.Graph()
 dagreGraph.setDefaultEdgeLabel(() => ({}))
@@ -22,7 +22,7 @@ const getLayoutedElements = (nodes: Node[], edges: Edge[]): { nodes: Node[], edg
   dagreGraph.setGraph({ rankdir: 'TB' })
 
   nodes.forEach((node) => {
-    node.data.label = link
+    node.data.label = <a href='https://locallhost.com/' target='_blank' rel="noreferrer" className='hover:text-neutral-50'>link</a>
     dagreGraph.setNode(node.id, { width: nodeWidth, height: nodeHeight })
   });
 
@@ -54,38 +54,43 @@ const Sitemap: React.FC = () => {
 
   useEffect(() => {
     console.log('siteMap effect')
-    siteMap.apiMethod(input).then(
-      response => {
-        if (response.statusCode < 400) {
-          const graph = getLayoutedElements(response.nodes, response.edges)
-          setSiteMap({
-            ...siteMap, siteGraph: {
-              nodes: graph.nodes,
-              edges: graph.edges,
-              statusCode: response.statusCode
-            },
-            visible: true
-          })
+    if (siteMap.click !== 0) {
+      siteMap.apiMethod(input).then(
+        response => {
+          if (response.statusCode < 400) {
+            const graph = getLayoutedElements(response.nodes, response.edges)
+            setSiteMap({
+              ...siteMap, siteGraph: {
+                nodes: graph.nodes,
+                edges: graph.edges,
+                statusCode: response.statusCode
+              },
+              visible: true
+            })
+          }
         }
-      }
-    ).catch(err => { console.log(err) })
-  }, [])
+      ).catch(err => { console.log(err) })
+    }
+  }, [siteMap.click])
 
   return (
-    <div className="border-2 border-solid text-slate-300 text-2xl h-48 w-1/2 min-w-[48rem]
-              max-w-4xl mx-auto my-4 rounded-xl flex flex-col justify-evenly items-center">
-      <ReactFlow
-        nodes={siteMap.siteGraph.nodes}
-        edges={siteMap.siteGraph.edges}
-        connectionLineType={ConnectionLineType.SmoothStep}
-        fitView={true}
-        nodesConnectable={false}
+    siteMap.visible ? (
+      <div className="container relative w-full graph">
+        <CloseOutlined
+          className='absolute z-10 cursor-pointer right-0.5 top-0 text-4xl'
+          onClick={() => { setSiteMap({ ...siteMap, visible: false }) }} />
+        <ReactFlow
+          nodes={siteMap.siteGraph.nodes}
+          edges={siteMap.siteGraph.edges}
+          connectionLineType={ConnectionLineType.SmoothStep}
+          fitView={true}
+          nodesConnectable={false}
 
-      >
-        <Controls />
-        <Background gap={20} size={1} />
-      </ReactFlow>
-    </div>
+        >
+          <Controls />
+          <Background gap={20} size={1} />
+        </ReactFlow>
+      </div>) : null
   );
 }
 

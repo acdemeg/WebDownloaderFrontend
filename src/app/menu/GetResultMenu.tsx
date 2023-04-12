@@ -33,7 +33,7 @@ const GetResultMenu: React.FC<IShowOneTimeInfo> = ({ showOneTimeInfo }) => {
         action={GET_SITE_MAP}
         title={titleButtonList[context.lang][GET_SITE_MAP]}
         Icon={ApartmentOutlined}
-        hanlder={() => { context.setSiteMap({ ...context.siteMap, visible: true }) }}
+        hanlder={() => { context.setSiteMap({ ...context.siteMap, visible: true, click: Math.random() }) }}
       />
     </div>
   )
