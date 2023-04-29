@@ -5,6 +5,8 @@ export interface ContextState {
   setLanguage: (lang: string) => void
   input: string
   setInput: (input: string) => void
+  inputError: boolean
+  setInputError: (error: boolean) => void
   actionDescription: string
   setDescription: (desc: string) => void
   oneTimeInfoData: OneTimeInfoType

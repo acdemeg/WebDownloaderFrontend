@@ -53,7 +53,6 @@ const Sitemap: React.FC = () => {
   const { input, siteMap, setSiteMap } = useContextProvider()
 
   useEffect(() => {
-    console.log('siteMap effect')
     if (siteMap.click !== 0) {
       siteMap.apiMethod(input).then(
         response => {

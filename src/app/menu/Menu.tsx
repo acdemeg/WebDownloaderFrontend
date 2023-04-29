@@ -12,7 +12,7 @@ import { type ApiMethod } from '../Types'
 import { common } from '../../internationalization/Captions'
 
 const Menu: React.FC = () => {
-  const { lang, input, oneTimeInfoData, setOneTimeInfoData } = useContextProvider()
+  const { lang, input, oneTimeInfoData, setOneTimeInfoData, setInputError } = useContextProvider()
 
   const showOneTimeInfo = (headerType: string, apiMethod: ApiMethod): void => {
     if (input !== '') {
@@ -26,10 +26,13 @@ const Menu: React.FC = () => {
         click: Math.random()
       })
     }
+    else {
+      setInputError(true)
+    }
   }
 
   return (
-    <div className='w-full h-72 flex justify-evenly'>
+    <div className='w-full h-72 flex justify-evenly mb-5'>
       <RunTaskMenu showOneTimeInfo={showOneTimeInfo} />
       <div className='flex flex-col justify-around items-center w-1/3'>
         <MenuButton

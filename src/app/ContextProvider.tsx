@@ -9,6 +9,8 @@ const initialState: ContextState = {
   setLanguage: () => { },
   input: '',
   setInput: () => { },
+  inputError: false,
+  setInputError: () => { },
   actionDescription: actionsDescList[RUS].DEFAULT,
   setDescription: () => { },
   oneTimeInfoData: {
@@ -28,6 +30,7 @@ export const useContextProvider = (): ContextState => {
 const ContextProvider: React.FC<Children> = ({ children }) => {
   const [lang, setLang] = useState<string>(initialState.lang)
   const [input, setInput] = useState<string>(initialState.input)
+  const [inputError, setInputError] = useState<boolean>(initialState.inputError)
   const [actionDescription, setDescription] = useState<string>(initialState.actionDescription)
   const [oneTimeInfoData, setOneTimeInfoData] = useState<OneTimeInfoType>(initialState.oneTimeInfoData)
   const [siteMap, setSiteMap] = useState<IChartSite>(initialState.siteMap)
@@ -41,6 +44,8 @@ const ContextProvider: React.FC<Children> = ({ children }) => {
     <Context.Provider value={{
       input,
       setInput,
+      inputError,
+      setInputError,
       lang,
       setLanguage,
       actionDescription,
