@@ -22,7 +22,13 @@ const getLayoutedElements = (nodes: Node[], edges: Edge[]): { nodes: Node[], edg
   dagreGraph.setGraph({ rankdir: 'TB' })
 
   nodes.forEach((node) => {
-    node.data.label = <a href='https://locallhost.com/' target='_blank' rel="noreferrer" className='hover:text-neutral-50'>link</a>
+    node.data.label = <a
+      href={node.data.link}
+      target='_blank'
+      rel="noreferrer"
+      className='hover:text-neutral-50'>
+      {node.data.label}
+    </a>
     dagreGraph.setNode(node.id, { width: nodeWidth, height: nodeHeight })
   });
 
@@ -82,9 +88,10 @@ const Sitemap: React.FC = () => {
           nodes={siteMap.siteGraph.nodes}
           edges={siteMap.siteGraph.edges}
           connectionLineType={ConnectionLineType.SmoothStep}
+          minZoom={0.05}
           fitView={true}
           nodesConnectable={false}
-
+          snapToGrid={true}
         >
           <Controls />
           <Background gap={20} size={1} />
