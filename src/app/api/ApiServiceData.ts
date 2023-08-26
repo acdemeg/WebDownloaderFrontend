@@ -30,8 +30,8 @@ class ApiServiceData {
     return await this.getResourse('/estimate', { params: { uri } })
   }
 
-  public async discoverSize(taskId: string): Promise<ResponseDto> {
-    return await this.getResourse('/size', { params: { taskId } })
+  public async discoverSize(taskId: string, lang?: string): Promise<ResponseDto> {
+    return await this.getResourse('/size', { params: { taskId, lang } })
   }
 
   public async mapSite(uri: string): Promise<ResponseDto> {
