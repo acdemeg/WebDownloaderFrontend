@@ -2,7 +2,7 @@ import axios from 'axios'
 import { type IMapSite, type ResponseDto } from '../Types'
 
 class ApiServiceData {
-  private readonly base: string = 'http://localhost:8080'
+  private readonly base: string = `http://${window.document.location.hostname}:8080`
 
   private async getResourse(url: string, params: any): Promise<any> {
     const res = await axios.get(`${this.base}${url}`, params)
