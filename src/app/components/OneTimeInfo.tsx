@@ -43,7 +43,12 @@ const OneTimeInfo: React.FC = () => {
         <div>
           <Button
             className='menu-button hover:text-blue-400 hover:border-blue-400'
-            onClick={() => { navigator.clipboard.writeText(oneTimeInfoData.value).catch(e => { console.log(e) }) }}>
+            onClick={() => {
+              navigator.clipboard.writeText(oneTimeInfoData.value).catch(e => {
+                console.log(e);
+                localStorage.setItem('oneTimeInfoData.value', oneTimeInfoData.value);
+              })
+            }}>
             {titleButtonList[lang][COPY]}
           </Button>
           <Button danger
