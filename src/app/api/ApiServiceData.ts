@@ -2,7 +2,7 @@ import axios from 'axios'
 import { type IMapSite, type ResponseDto } from '../Types'
 
 class ApiServiceData {
-  private readonly base: string = 'http://localhost:8080'
+  private readonly base: string = `http://${window.document.location.hostname}:8080`
 
   private async getResourse(url: string, params: any): Promise<any> {
     const res = await axios.get(`${this.base}${url}`, params)
@@ -30,8 +30,8 @@ class ApiServiceData {
     return await this.getResourse('/estimate', { params: { uri } })
   }
 
-  public async discoverSize(taskId: string): Promise<ResponseDto> {
-    return await this.getResourse('/size', { params: { taskId } })
+  public async discoverSize(taskId: string, lang?: string): Promise<ResponseDto> {
+    return await this.getResourse('/size', { params: { taskId, lang } })
   }
 
   public async mapSite(uri: string): Promise<ResponseDto> {

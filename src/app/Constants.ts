@@ -20,3 +20,7 @@ export const ONE_TIME_INFO_STATUS_HEADER = 'oneTimeInfoStatusHeader'
 export const ONE_TIME_INFO_ERROR_HEADER = 'oneTimeInfoErrorHeader'
 export const ONE_TIME_INFO_DOWNLOAD_HEADER = 'oneTimeInfoDownloadHeader'
 export const ONE_TIME_INFO_BODY_MOCK = 'oneTimeInfoBodyMock'
+
+// LocalStorage constants
+export const RECENTLY_VALUES = 'recently_values';
+export const RECENTLY_VALUES_LENGTH = 100;

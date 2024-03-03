@@ -4,7 +4,7 @@ import { SearchOutlined } from '@ant-design/icons'
 import RunTaskMenu from './RunTasksMenu'
 import GetResultMenu from './GetResultMenu'
 import DescriptionMenu from './DescriptionMenu'
-import { GET_STATUS_TASK, ONE_TIME_INFO_BODY_MOCK, ONE_TIME_INFO_STATUS_HEADER } from '../Constants'
+import { GET_STATUS_TASK, ONE_TIME_INFO_BODY_MOCK, ONE_TIME_INFO_STATUS_HEADER, RECENTLY_VALUES, RECENTLY_VALUES_LENGTH } from '../Constants'
 import { useContextProvider } from '../ContextProvider'
 import { titleButtonList } from '../../internationalization/ButtonTitles'
 import ApiServiceData from '../api/ApiServiceData'
@@ -25,6 +25,16 @@ const Menu: React.FC = () => {
         textColor: 'blue',
         click: Math.random()
       })
+
+      // save input in localStorage
+      const recentlyValues: string[] = JSON.parse(localStorage.getItem(RECENTLY_VALUES) ?? '[]');
+      if (recentlyValues.length > RECENTLY_VALUES_LENGTH) {
+        recentlyValues.shift();
+      }
+      localStorage.setItem(
+        RECENTLY_VALUES,
+        JSON.stringify(recentlyValues.includes(input) ? recentlyValues : [...recentlyValues, input])
+      );
     }
     else {
       setInputError(true)

@@ -1,0 +1,45 @@
+name: Release
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - '*'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set Node.js 16.x
+        uses: actions/setup-node@v4.0.2
+        with:
+          node-version: 16.x
+          cache: 'yarn'
+
+      - name: Yarn install
+        uses: Borales/actions-yarn@v5.0.0
+        with:
+          cmd: install
+
+      - name: Yarn build
+        uses: Borales/actions-yarn@v5.0.0
+        with:
+          cmd: build
+
+      - name: Zip build dir
+        uses: montudor/action-zip@v1
+        with:
+          args: zip -qq -r build.zip build
+
+      - name: Create release
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "build.zip"
+          allowUpdates: true

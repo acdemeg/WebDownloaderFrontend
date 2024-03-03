@@ -5,15 +5,18 @@ import Logo from './logo/Logo'
 import MainContainer from './main/MainContainer'
 import Sitemap from './sitemap/Sitemap'
 import ContextProvider from './ContextProvider'
+import ErrorBoundary from './error-boundry/ErrorBoundary'
 
 const App: React.FC = () => {
   return (
     <ContextProvider>
-      <LangSwitcher />
-      <Logo />
-      <MainContainer />
-      <OneTimeInfo />
-      <Sitemap />
+      <ErrorBoundary>
+        <LangSwitcher />
+        <Logo />
+        <MainContainer />
+        <OneTimeInfo />
+        <Sitemap />
+      </ErrorBoundary>
     </ContextProvider>
   )
 }
