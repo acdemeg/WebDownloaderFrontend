@@ -11,7 +11,7 @@
 Follow above link for more details
 
 ## DEMO
-http://devproject.site:8002
+http://45.90.218.76/
 
 ## DockerHub
 https://hub.docker.com/repository/docker/acdemeg/web-downloader/general
